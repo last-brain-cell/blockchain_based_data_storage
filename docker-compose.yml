@@ -8,6 +8,6 @@ services:
     ports:
       - "8800:8800"
       - "9000:9000"
-#    volumes:
-#      - ./code:/code
+    volumes:
+      - ./code:/files
 
