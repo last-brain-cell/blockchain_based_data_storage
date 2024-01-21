@@ -16,6 +16,8 @@
    ```bash
    python run_app.py
    ```
+   
+Or just run the docker-compose if you have docker 
 
 ### Project Overview
 
