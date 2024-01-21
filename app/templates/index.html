@@ -1,0 +1,205 @@
+{% extends "base.html" %} {% block content %}
+<style type="text/css">
+  .navbar-item:hover {
+    background-color: #4CAF50; /* Updated to a green color */
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  /* Title, subtitle, and horizontal line. */
+  .title {
+    margin-top: 9rem;
+    text-align: center;
+    line-height: 1.6rem;
+  }
+
+  .title-text {
+    font-family: 'Arial', sans-serif; /* Changed to Arial font */
+    font-size: 4rem; /* Decreased font size */
+    color: #333; /* Changed text color */
+  }
+
+  .subtitle-text {
+    font-size: 2.5rem;
+    color: #555; /* Changed text color */
+  }
+
+  .hr {
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #4CAF50; /* Updated to a green color */
+    width: 55rem;
+  }
+
+  /* Buttons, post text area, name input, and body styling. */
+  .content {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .btn:hover {
+    background-color: #45a049; /* Darker green color on hover */
+    cursor: pointer;
+  }
+
+  .post-textarea,
+  .name-input {
+    font-family: 'Arial', sans-serif; /* Changed to Arial font */
+    font-size: 1.6rem; /* Decreased font size */
+    padding: 1rem;
+    border-radius: 0.4rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: #333; /* Changed border color */
+  }
+
+  .request_tx {
+    margin: 2rem 2rem 12rem 2rem;
+  }
+
+  /* Post boxes styling */
+  .post_box {
+    background: #f9f9f9; /* Light gray background */
+    padding: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    border: 0.1rem solid #ddd; /* Lighter border color */
+  }
+
+  .post_box-header {
+    padding-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .post_box-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+    float: left;
+    margin-right: 1rem;
+    border: 0.1rem solid #4CAF50; /* Green border */
+    box-shadow: 0 0 0 0.1rem #4CAF50; /* Green shadow */
+  }
+
+  .post_box-avatar::after {
+    content: "";
+    display: block;
+  }
+
+  .post_box-name {
+    font-weight: bold;
+    color: #333; /* Changed text color */
+  }
+
+  .post_box-subtitle {
+    color: #777;
+  }
+
+  .post_box-body {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .post_box-options {
+    float: right;
+  }
+
+  .option-btn {
+    background: #f4f4f4; /* Light gray background */
+    border: none;
+    color: #333; /* Changed text color */
+    padding: 0.7rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    outline: none;
+    height: 4rem;
+  }
+</style>
+<!-- Rest of your HTML code remains unchanged -->
+
+<div class="container-fluid">
+  <div class="row" style="padding-top: 10px">
+    <div class="col-sm-4" style="">
+      <h2 class="text-center alert alert-primary">Upload a File</h2>
+      <form action="/submit" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>User Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="user"
+            placeholder="Enter Your Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Upload a File:</label>
+          <input
+            type="file"
+            id="fileUpld"
+            name="v_file"
+            accept=".*"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Upload</button>
+      </form>
+    </div>
+
+    <div class="col-sm-4">
+      <h2 class="text-center alert alert-primary">Search Files</h2>
+        <form action="/search" method="GET">
+          <div class="form-group">
+            <input type="text" class="form-control" name="query" placeholder="Enter search query">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+
+    <div class="col-sm-7">
+      <h2 class="text-center alert alert-primary">Uploaded Files</h2>
+      {% for post in request_tx %}
+      <div class="post_box">
+        <div class="post_box-header">
+          <div
+            style="
+              background: rgb(219, 52, 52) none repeat scroll 0% 0%;
+              box-shadow: rgb(0, 4, 6) 0 0 0 0.2rem;
+            "
+            class="post_box-avatar"
+          >
+            {{post.user[0]}}
+          </div>
+          <div class="name-header">{{post.user}}</div>
+        </div>
+        <div>
+          <div class="post_box-body">
+            <p>
+              {{post.v_file}}&#x2192<a href="{{url_for('download_file',variable = post.v_file)}}"
+                >Download</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="col-sm-1"></div>
+  </div>
+</div>
+
+{% endblock %}
