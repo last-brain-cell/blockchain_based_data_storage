@@ -33,4 +33,4 @@ Two proof of work algorithms are implemented, each employing different nonce cal
 
 ### On-chain vs. Off-chain Blockchain
 
-This implementation adopts an on-chain blockchain approach, storing file data directly within blocks. While on-chain blockchain offers heightened security and straightforward data recovery, it may demand more resources. Off-chain blockchain solutions store data externally but might compromise some security features.
+(This project was made as a part of the LNMHacks Hackathon in LNMIIT)
