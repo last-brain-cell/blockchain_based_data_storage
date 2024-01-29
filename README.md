@@ -17,15 +17,15 @@
    python run_app.py
    ```
    
-Or just run the docker-compose if you have docker 
+4. Or just run the docker-compose if you have docker 
 
 ### Project Overview
 
-We have created a decentralized file storage web application utilizing blockchain technology. Users can securely upload and download files, ensuring data integrity and preventing unauthorized modifications.
+This is a decentralized file storage web application utilizing blockchain technology. Users can securely upload and download files, ensuring data integrity and preventing unauthorized modifications.
 
 ### Blockchain Significance
 
-Blockchain provides a secure means of storing digital information, incorporating consensus algorithms and block validation. Our application utilizes SHA256 for security and implements a proof of work consensus algorithm.
+Blockchain provides a secure means of storing digital information, incorporating consensus algorithms and block validation. This application utilizes SHA256 for security and implements a proof of work consensus algorithm.
 
 ### Proof of Work Algorithms
 
@@ -33,4 +33,4 @@ Two proof of work algorithms are implemented, each employing different nonce cal
 
 ### On-chain vs. Off-chain Blockchain
 
-Our implementation adopts an on-chain blockchain approach, storing file data directly within blocks. While on-chain blockchain offers heightened security and straightforward data recovery, it may demand more resources. Off-chain blockchain solutions store data externally but might compromise some security features.
+This implementation adopts an on-chain blockchain approach, storing file data directly within blocks. While on-chain blockchain offers heightened security and straightforward data recovery, it may demand more resources. Off-chain blockchain solutions store data externally but might compromise some security features.
